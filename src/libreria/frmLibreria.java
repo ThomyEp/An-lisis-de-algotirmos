@@ -18,9 +18,12 @@ public class frmLibreria extends javax.swing.JFrame {
     public frmLibreria() {
         
         initComponents();
+        this.setTitle("Biblioteca"); //Cambiar el titulo del jframe
+        this.setLocationRelativeTo(frmLibreria.this); //centrar en medio el jframe
+        this.setResizable(false); //no se pueda cambiar el tamaño del jframe
        
     }
-     ArrayList<metodosLibreria> mLibro=new ArrayList<>();
+    ArrayList<metodosLibreria> mLibro=new ArrayList<>(); //instancia de la clase metodosLibreria
         
 
     /**
@@ -46,6 +49,9 @@ public class frmLibreria extends javax.swing.JFrame {
         txtArlibreria = new javax.swing.JTextArea();
         jLabel2 = new javax.swing.JLabel();
         btnPoslibromayor = new javax.swing.JButton();
+        btnMostrarisbnimpares = new javax.swing.JButton();
+        btnMostrarposisbn5 = new javax.swing.JButton();
+        btnValorpospares = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -98,40 +104,66 @@ public class frmLibreria extends javax.swing.JFrame {
             }
         });
 
+        btnMostrarisbnimpares.setText("Mostrar Isbn impares");
+        btnMostrarisbnimpares.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnMostrarisbnimparesActionPerformed(evt);
+            }
+        });
+
+        btnMostrarposisbn5.setText("Mostrar posición Isbn terminen en caracter 5");
+        btnMostrarposisbn5.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnMostrarposisbn5ActionPerformed(evt);
+            }
+        });
+
+        btnValorpospares.setText("Valor libros en posiciones pares");
+        btnValorpospares.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnValorposparesActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(46, 46, 46)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(btnValorlibros, javax.swing.GroupLayout.PREFERRED_SIZE, 129, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(btnPoslibromayor)
-                            .addComponent(btnMostrarlibros, javax.swing.GroupLayout.PREFERRED_SIZE, 129, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(btnLibrosxeditorial))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(jLabel2))
+                        .addContainerGap()
+                        .addComponent(jScrollPane1))
                     .addGroup(layout.createSequentialGroup()
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(lblIsbn)
-                            .addComponent(txtIsbn, javax.swing.GroupLayout.PREFERRED_SIZE, 74, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGap(18, 18, 18)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(lblValor)
-                            .addComponent(txtValor, javax.swing.GroupLayout.PREFERRED_SIZE, 74, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGap(14, 14, 14)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(lblEditorial)
+                        .addGap(46, 46, 46)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                             .addGroup(layout.createSequentialGroup()
-                                .addComponent(cbxEditorial, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(lblIsbn)
+                                    .addComponent(txtIsbn, javax.swing.GroupLayout.PREFERRED_SIZE, 74, javax.swing.GroupLayout.PREFERRED_SIZE))
                                 .addGap(18, 18, 18)
-                                .addComponent(btnAgregarlibro)))))
-                .addContainerGap(22, Short.MAX_VALUE))
-            .addGroup(layout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(jScrollPane1)
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(lblValor)
+                                    .addComponent(txtValor, javax.swing.GroupLayout.PREFERRED_SIZE, 74, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addGap(14, 14, 14)
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(lblEditorial)
+                                    .addGroup(layout.createSequentialGroup()
+                                        .addComponent(cbxEditorial, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addGap(18, 18, 18)
+                                        .addComponent(btnAgregarlibro)))
+                                .addGap(0, 0, Short.MAX_VALUE))
+                            .addGroup(layout.createSequentialGroup()
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(btnValorlibros, javax.swing.GroupLayout.PREFERRED_SIZE, 129, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(btnPoslibromayor)
+                                    .addComponent(btnMostrarlibros, javax.swing.GroupLayout.PREFERRED_SIZE, 129, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(btnLibrosxeditorial)
+                                    .addComponent(btnMostrarisbnimpares)
+                                    .addComponent(btnMostrarposisbn5)
+                                    .addComponent(btnValorpospares))
+                                .addGap(32, 32, 32)
+                                .addComponent(jLabel2)))))
                 .addContainerGap())
         );
         layout.setVerticalGroup(
@@ -142,7 +174,7 @@ public class frmLibreria extends javax.swing.JFrame {
                     .addComponent(lblIsbn)
                     .addComponent(lblValor)
                     .addComponent(lblEditorial))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(txtIsbn, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(txtValor, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -157,11 +189,19 @@ public class frmLibreria extends javax.swing.JFrame {
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addComponent(btnValorlibros)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(btnPoslibromayor))
-                    .addComponent(jLabel2))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 169, Short.MAX_VALUE)
-                .addGap(33, 33, 33))
+                        .addComponent(btnPoslibromayor)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(btnMostrarisbnimpares)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(btnMostrarposisbn5)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(btnValorpospares)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 174, Short.MAX_VALUE))
+                    .addGroup(layout.createSequentialGroup()
+                        .addComponent(jLabel2)
+                        .addGap(0, 0, Short.MAX_VALUE)))
+                .addContainerGap())
         );
 
         pack();
@@ -176,88 +216,135 @@ public class frmLibreria extends javax.swing.JFrame {
 
     private void btnMostrarlibrosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnMostrarlibrosActionPerformed
         // TODO add your handling code here:
-        txtArlibreria.append("N°\tLibro\tValor\tEditorial\n");
-        if (evt.getSource() == btnMostrarlibros) {
-            for (int i = 0; i < mLibro.size(); i++) {
+        txtArlibreria.setText(""); //limpia text area si tiene elementos
+        txtArlibreria.append("N°\tLibro\tValor\tEditorial\n"); //encabezado del text area
+        if (evt.getSource() == btnMostrarlibros) { //condicion para ver si esta ejecutando un evento 
+            for (int i = 0; i < mLibro.size(); i++) { //recorrer array list
                 txtArlibreria.append((i + 1) + "\t" + mLibro.get(i).getIsbn() + "\t" + mLibro.get(i).getValor() + "\t" + mLibro.get(i).getEditorial() + "\n");
-            }
-        }
+                // imprimimos en el text area los libros que estan en el array list
+            } //fin for
+        } //fin if
     }//GEN-LAST:event_btnMostrarlibrosActionPerformed
 
     private void btnLibrosxeditorialActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnLibrosxeditorialActionPerformed
         // TODO add your handling code here:
-        txtArlibreria.setText(""); 
-        String e1 = "001 Addison Wesley";
-        String e2 = "002  Mc Graw Hill";
-        String e3 = "003 Prentice Hall";
-        String liEdi1[] = new String[mLibro.size()];
-        int conLi1 = 0;
-        int conLi2 = 0;
-        int conLi3 = 0;
-        txtArlibreria.setText("");
-        txtArlibreria.append("Editorial 001 Addison Wesley\n");
-        for (int i = 0; i < mLibro.size(); i++) {
-            if (mLibro.get(i).getEditorial() == e1) {
-                liEdi1[i] = mLibro.get(i).getIsbn();
-                conLi1++;
-                txtArlibreria.append(liEdi1[i] + "\n");
-            }
-        }
-        txtArlibreria.append("Editorial 002 Mc Graw Hill\n");
-        for (int i = 0; i < mLibro.size(); i++) {
-            if (mLibro.get(i).getEditorial() == e2) {
-                liEdi1[i] = mLibro.get(i).getIsbn();
+        txtArlibreria.setText(""); //limpia text area si tiene elementos
+        String e1 = "001 Addison Wesley"; //editorial 1
+        String e2 = "002  Mc Graw Hill"; //editorial 2
+        String e3 = "003 Prentice Hall"; //editorial 3
+        String liEdi1[] = new String[mLibro.size()]; //vector tipo String con tamaño de la array list
+        int conLi1 = 0; //contar libros de la editorial 1
+        int conLi2 = 0; //contar libros de la editorial 2
+        int conLi3 = 0; //contar libros de la editorial 3
+        txtArlibreria.append("Editorial 001 Addison Wesley\n"); // Encabezado 1
+        for (int i = 0; i < mLibro.size(); i++) {  //recorrer array list
+            if (mLibro.get(i).getEditorial().contains(e1)) { //condicion con contains para buscar los libros de la editorial 1
+                liEdi1[i] = mLibro.get(i).getIsbn(); //asignamos al vector los isbn que cumplen la condición
+                conLi1++; //
+                txtArlibreria.append(liEdi1[i] + "\n"); //mostramos en un text area los datos obtenidos
+            } //fin if condicion 1
+        } //fin for 1
+        txtArlibreria.append("Editorial 002 Mc Graw Hill\n"); // Encabezado 2
+        for (int i = 0; i < mLibro.size(); i++) { //recorrer array list
+            if (mLibro.get(i).getEditorial().contains(e2)) { //condicion con contains para buscar los libros de la editorial 1
+                liEdi1[i] = mLibro.get(i).getIsbn(); //asignamos al vector los isbn que cumplen la condición
                 conLi2++;
-                txtArlibreria.append(liEdi1[i] + "\n");
-            }
-        }
-        txtArlibreria.append("Editorial 003Prentice Hall\n");
-        for (int i = 0; i < mLibro.size(); i++) {
-            if (mLibro.get(i).getEditorial() == e3) {
-                liEdi1[i] = mLibro.get(i).getIsbn();
+                txtArlibreria.append(liEdi1[i] + "\n"); //mostramos en un text area los datos obtenidos
+            } //fin if condicion 2
+        } //fin for 2
+        txtArlibreria.append("Editorial 003Prentice Hall\n"); // Encabezado 3
+        for (int i = 0; i < mLibro.size(); i++) { //recorrer array list
+            if (mLibro.get(i).getEditorial().contains(e3)) { //condicion con contains para buscar los libros de la editorial 1
+                liEdi1[i] = mLibro.get(i).getIsbn(); //asignamos al vector los isbn que cumplen la condición
                 conLi3++;
-                txtArlibreria.append(liEdi1[i] + "\n");
-            }
-        }
+                txtArlibreria.append(liEdi1[i] + "\n"); //mostramos en un text area los datos obtenidos
+            } //fin if condicion 3
+        } //fin for 3
     }//GEN-LAST:event_btnLibrosxeditorialActionPerformed
 
     private void btnValorlibrosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnValorlibrosActionPerformed
         // TODO add your handling code here:
-        txtArlibreria.setText(""); 
-        float totalLibros = 0;
-         txtArlibreria.append("Libros en la biblioteca\n");
-        for (int i = 0; i < mLibro.size(); i++) {
-                totalLibros +=mLibro.get(i).getValor();
+        txtArlibreria.setText(""); //limpia text area si tiene elementos 
+        float totalLibros = 0; //acumulador para valor total de libros
+         txtArlibreria.append("Libros en la biblioteca\n"); //encabezado text area
+        for (int i = 0; i < mLibro.size(); i++) { //recorrer array list
+                totalLibros +=mLibro.get(i).getValor(); //
                 txtArlibreria.append((i + 1) + "\t" + mLibro.get(i).getIsbn() + "\t" + mLibro.get(i).getValor() + "\t" + mLibro.get(i).getEditorial() + "\n");
-        }
-         txtArlibreria.append("Valor total de los libros en la biblioteca: " +totalLibros);  
+        } //fin for
+         txtArlibreria.append("Valor total de los libros en la biblioteca: " +totalLibros); //mostrar en el text area el toral de los libros  
     }//GEN-LAST:event_btnValorlibrosActionPerformed
 
-    public int mayorPosicion(){
-        int posM=0;
-        float valM = 0;
-        for (int i = 0; i < mLibro.size(); i++) {
-             if (mLibro.get(i).getValor() > valM) {
-                 valM =mLibro.get(i).getValor();
-            }
-        }  
-        for (int i = 0; i < mLibro.size(); i++) {
-            if (mLibro.get(i).getValor() == valM) {
-                posM++;
+    public int mayorPosicion(){ //metodo para obtener mayor posición  
+        int posM=0; //contador de posiciones
+        String mL = ""; //variable cadena 
+        float valM = 0; //variable para valor mayor
+        for (int i = 0; i < mLibro.size(); i++) { //recorrer array list
+             if (mLibro.get(i).getValor() > valM) { //condición para evaluar el mayor valor
+                 valM = mLibro.get(i).getValor(); //valM toma el valor mayor hasta terminar de recorrer el array list
+                 mL = mLibro.get(i).getIsbn(); //mL toma el caracter de isbn 
+            } //fin if 
+        } //fin for 
+        for (int i = 0; i < mLibro.size(); i++) { //recorrer array list
+            if (mL == mLibro.get(i).getIsbn()) { //condición para validar la posición del valor máximo   
+                posM = i+1; //indica la posición
             }
         }
-        return posM;
+       return posM; //rotornar la posición mayor 
     }
     private void btnPoslibromayorActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnPoslibromayorActionPerformed
         // TODO add your handling code here:
-        txtArlibreria.setText(""); 
-        txtArlibreria.append("Libros en la biblioteca\n");
-        for (int i = 0; i < mLibro.size(); i++) {
+        txtArlibreria.setText(""); //limpia text area si tiene elementos 
+        txtArlibreria.append("Libros en la biblioteca\n"); //Encabezado text area
+        for (int i = 0; i < mLibro.size(); i++) { //recorrer array list
             txtArlibreria.append((i + 1) + "\t" + mLibro.get(i).getIsbn() + "\t" + mLibro.get(i).getValor() + "\t" + mLibro.get(i).getEditorial() + "\n");
-        }
-        txtArlibreria.append("La posicion del libro con mayor valor es:" + mayorPosicion());
-        txtArlibreria.append("\nEl libro es : " + mLibro.get(mayorPosicion()-1).getIsbn()+ " y su precio es: " + mLibro.get(mayorPosicion()-1).getValor());
+            //imprimir libros de la biblioteca 
+        } //fin for
+        txtArlibreria.append("La posicion del libro con mayor valor es: " + mayorPosicion()); //muestra en el text area la mayor posición
+        
     }//GEN-LAST:event_btnPoslibromayorActionPerformed
+
+    private void btnMostrarisbnimparesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnMostrarisbnimparesActionPerformed
+        // TODO add your handling code here:
+         txtArlibreria.setText(""); //limpia text area si tiene elementos 
+          txtArlibreria.append("Mostrar Isbn impares\n"); //Encabezado text area 
+        for (int i = 0; i < mLibro.size(); i+=2) { //recorre array list
+            txtArlibreria.append((i + 1) + "\t" + mLibro.get(i).getIsbn() + "\t" + mLibro.get(i).getValor() + "\t" + mLibro.get(i).getEditorial() + "\n");
+            //imprimir isbn impares
+        } //fin for 
+    }//GEN-LAST:event_btnMostrarisbnimparesActionPerformed
+
+    private void btnMostrarposisbn5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnMostrarposisbn5ActionPerformed
+        // TODO add your handling code here:
+        txtArlibreria.setText(""); //limpia text area si tiene elementos 
+        txtArlibreria.append("Libros en la biblioteca\n"); //Encabezado text area 
+        for (int i = 0; i < mLibro.size(); i++) { //recorrer array list
+            txtArlibreria.append((i + 1) + "\t" + mLibro.get(i).getIsbn() + "\t" + mLibro.get(i).getValor() + "\t" + mLibro.get(i).getEditorial() + "\n");
+            //imprimir elementos del array list
+        }
+        txtArlibreria.append( "posiciones de los libros cuyo código isbn termina en el carácter 5. \nLas posiciones son: "); //Encabezado text area 
+        for (int i = 0; i < mLibro.size(); i++) { //recorrer array list
+             if (mLibro.get(i).getIsbn().contains("5")) { //condición para verificar que los isbn terminen con el caracter 5
+                 txtArlibreria.append((i + 1)+ "," ); //mostrar las posiciones de los isbn
+            }else{
+                 txtArlibreria.append(0+""); //caso contrario envia 0
+             } //fin if else  
+        } //fin for    
+    }//GEN-LAST:event_btnMostrarposisbn5ActionPerformed
+
+    private void btnValorposparesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnValorposparesActionPerformed
+        // TODO add your handling code here:
+        txtArlibreria.setText(""); //limpia text area si tiene elementos 
+        txtArlibreria.append("Libros en la biblioteca\n");  //Encabezado text area 
+        for (int i = 0; i < mLibro.size(); i++) { //recorrer array list
+            txtArlibreria.append((i + 1) + "\t" + mLibro.get(i).getIsbn() + "\t" + mLibro.get(i).getValor() + "\t" + mLibro.get(i).getEditorial() + "\n");
+            //imprimir elementos del array list
+        }
+        float valorPospar = 0; //variable para valores de los libros 
+        for (int i = 1; i < mLibro.size(); i+=2) { //recorrer array list
+             valorPospar+= mLibro.get(i).getValor(); //calculo valor total de libros pares
+        } //fin for 
+        txtArlibreria.append("El valor total de los libros en posiciones pares es: " +valorPospar); // muestra en el text area valor
+    }//GEN-LAST:event_btnValorposparesActionPerformed
 
     /**
      * @param args the command line arguments
@@ -297,9 +384,12 @@ public class frmLibreria extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnAgregarlibro;
     private javax.swing.JButton btnLibrosxeditorial;
+    private javax.swing.JButton btnMostrarisbnimpares;
     private javax.swing.JButton btnMostrarlibros;
+    private javax.swing.JButton btnMostrarposisbn5;
     private javax.swing.JButton btnPoslibromayor;
     private javax.swing.JButton btnValorlibros;
+    private javax.swing.JButton btnValorpospares;
     private javax.swing.JComboBox<String> cbxEditorial;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JScrollPane jScrollPane1;
